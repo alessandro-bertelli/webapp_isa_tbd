@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Pizze {% endblock %}</h1>
+    {% for pizza in pizze %}
+        <div class='pizza'>
+            <h3><strong>#{{ pizza[1] }}</strong> <em><strong>{{ pizza[0] }}</strong></em> .................{{ pizza[2] }}</h3>
+        </div>
+    {% endfor %}
+{% endblock %}
