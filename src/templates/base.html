@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}- PizzApp</title>
+    <title>{% block title %} PIZZApp {% endblock %}</title>
     <style>
-        
         nav a {
             color: #d64161;
             font-size: 3em;
             margin-left: 50px;
             text-decoration: none;
         }
-
     </style>
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">PIZZApp</a>
-        <a href="#">About</a>
+        <a href="{{ url_for('index') }}"><strong>PIZZApp|</strong></a>
+        <i href="nuova-prenotazione">Nuova prenotazione|</a>
+        <i href="modifica-prenotazione">Modifica prenotazione|</a>
+        <i href="cancella-prenotazione">Cancella prenotazione|</a>
     </nav>
     <hr>
     <div class="content">
