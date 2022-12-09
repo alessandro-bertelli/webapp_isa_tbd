@@ -23,4 +23,4 @@ def index():
     bevande = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', pizze=pizze)
+    return render_template('index.html', pizze=pizze, bevande=bevande)
