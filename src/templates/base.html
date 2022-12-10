@@ -16,6 +16,20 @@
             margin-left: 50px;
             text-decoration: none;
         }
+        .parent {
+            display: flex;
+            width: 100%;
+        }
+        .menu {
+        flex: 1;
+        border: 0.3px solid black;
+        margin: 7px;
+        }
+        .variable {
+        flex: 1;
+        border: 0.3px solid black;
+        margin:7px;
+        }
     </style>
 </head>
 <body>
@@ -26,8 +40,9 @@
         <indice href="cancella-prenotazione">Cancella prenotazione       |</indice>
     </nav>
     <hr>
-    <div class="content">
-        {% block content %} {% endblock %}
+    <div class="parent">
+        <div align="center" class="menu">{% block menu %}{% endblock %} <br><br></div>
+        <div class="variable"></div>
     </div>
 </body>
 </html>
