@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block menu %}
     <h1>{% block title1 %} Pizze {% endblock %}</h1>
     {% for pizza in pizze %}
         <div class='pizza'>
@@ -14,4 +14,13 @@
             <h3><strong>{{ bevanda[1] }}.</strong> <em><strong>{{ bevanda[0] }}</strong></em> ....{{ bevanda[2] }} €</h3>
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block variable %}
+    <h6>
+            Ciao! <br><br> Usa il menu in alto per iniziare. <br><br>
+            Con questa applicazione potrai aggiungere, modificare o, se proprio devi, annullare una prenotazione nella nostra pizzeria. <br><br>
+            Il tutto ovviamente fatto con pochissimi click. <br><br><br>   
+    </h6>
+    <strong><em>ENJOY!</em></strong> 
 {% endblock %}
