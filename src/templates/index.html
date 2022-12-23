@@ -4,14 +4,14 @@
     <h1>{% block title1 %} Pizze {% endblock %}</h1>
     {% for pizza in pizze %}
         <div class='pizza'>
-            <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }}</h3>
+            <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }} €</h3>
         </div>
     {% endfor %}
 
     <h1>{% block title2 %} Bevande {% endblock %}</h1>
     {% for bevanda in bevande %}
         <div class='bevanda'>
-            <h3><strong>{{ bevanda[1] }}.</strong> <em><strong>{{ bevanda[0] }}</strong></em> ....{{ bevanda[2] }}</h3>
+            <h3><strong>{{ bevanda[1] }}.</strong> <em><strong>{{ bevanda[0] }}</strong></em> ....{{ bevanda[2] }} €</h3>
         </div>
     {% endfor %}
 {% endblock %}
