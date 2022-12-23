@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block variable %}
+    <h1>{% block title %} Aggiungi prenotazione {% endblock %}</h1>
+    <form method="post">
+        <p>
+            <label for="nome">Nome Cliente</label>
+            <input type="text" name="nome_cliente"
+                   placeholder="Nome Cliente">
+            </input>
+        </p>
+
+        <p>
+            <label for="cod_pizza">Codice Pizza</label>
+            <input type="int" name="cod_pizza"
+                   placeholder="Codice Pizza">
+            </input>
+        </p>
+
+        <p>
+            <label for="n_pizze">Numero Pizze</label>
+            <input type="int" name="num_pizze"
+                   placeholder="Numero pizze">
+            </input>
+        </p>
+
+        <p>
+            <label for="cod_pizza">Codice Bevanda</label>
+            <input type="int" name="cod_pizza"
+                   placeholder="Codice Pizza">
+            </input>
+        </p>
+
+        <p>
+            <label for="n_pizze">Numero Bevande</label>
+            <input type="int" name="num_pizze"
+                   placeholder="Numero pizze">
+            </input>
+        </p>
+
+        <p>
+            <label for="dataora">Data e Ora</label>
+            <input type="datetime" name="data_ora"
+                   placeholder="Data e Ora">
+            </input>
+        </p>
+
+        <p>
+            <label for="codice_coupon">Codice Coupon</label>
+            <input type="int" name="cod_coupon"
+                   placeholder="Codice Coupon">
+        </p>
+
+        <p>
+        <label for="">Review</label>
+        <br>
+        <textarea name="codici pizze"
+                  placeholder="Review"
+                  rows="15"
+                  cols="60"
+                  ></textarea>
+        </p>
+        <p>
+            <button type="submit">Invia Prenotazione</button>
+        </p>
+    </form>
+{% endblock %}

@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
@@ -24,3 +24,15 @@ def index():
     cur.close()
     conn.close()
     return render_template('index.html', pizze=pizze, bevande=bevande)
+
+@app.route('/new_pren/', methods=('GET', 'POST'))
+def new_pren():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM pizza;')
+    pizze = cur.fetchall()
+    cur.execute('SELECT * FROM bevanda;')
+    bevande = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('new_pren.html', pizze=pizze, bevande=bevande)
