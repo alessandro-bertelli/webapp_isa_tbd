@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block variable %}
-    <h1>{% block title %} Aggiungi prenotazione {% endblock %}</h1>
+    <h1>{% block title %} Nuova prenotazione {% endblock %}</h1>
     <form method="post">
         <p>
             <label for="nome">Nome Cliente</label>
@@ -25,16 +25,16 @@
         </p>
 
         <p>
-            <label for="cod_pizza">Codice Bevanda</label>
-            <input type="int" name="cod_pizza"
-                   placeholder="Codice Pizza">
+            <label for="cod_bevanda">Codice Bevanda</label>
+            <input type="int" name="codice_bevanda"
+                   placeholder="Codice Bevanda">
             </input>
         </p>
 
         <p>
-            <label for="n_pizze">Numero Bevande</label>
-            <input type="int" name="num_pizze"
-                   placeholder="Numero pizze">
+            <label for="n_bevande">Numero Bevande</label>
+            <input type="int" name="num_bevande"
+                   placeholder="Numero Bevande">
             </input>
         </p>
 
@@ -46,16 +46,16 @@
         </p>
 
         <p>
-            <label for="codice_coupon">Codice Coupon</label>
-            <input type="int" name="cod_coupon"
+            <label for="cod_coupon">Codice Coupon</label>
+            <input type="int" name="codice_coupon"
                    placeholder="Codice Coupon">
         </p>
 
         <p>
-        <label for="">Review</label>
+        <label for="richieste_particolari">Richieste Particolari</label>
         <br>
-        <textarea name="codici pizze"
-                  placeholder="Review"
+        <textarea name="rich_partic"
+                  placeholder="Richieste Particolari"
                   rows="15"
                   cols="60"
                   ></textarea>
