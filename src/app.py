@@ -30,14 +30,14 @@ def new_pren():
     conn = get_db_connection()
     if request.method == 'POST':
         nome = request.form['nome']
-        id_cliente = request.form['id_cliente']
         telefono = request.form['telefono']
+        cod_fiscale = request.form['cod_fiscale']
         data = request.form['data']
         orario = request.form['orario']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
-        cur.execute('INSERT INTO cliente (nome, id_cliente, telefono)''VALUES (%s, %s, %s)',(nome, id_cliente, telefono))
-        cur.execute('INSERT INTO prenotazione (data, orario, id_cliente)''VALUES (%s, %s, %s)',(data, orario, id_cliente))
+        cur.execute('INSERT INTO cliente (nome, telefono, cod_fiscale)''VALUES (%s, %s, %s)',(nome, telefono, cod_fiscale))
+        cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s)',(data, orario, cod_fiscale))
         conn.commit()
         cur.close()
         conn.close()
