@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
+{% block menu %}
+    <h1>{% block title1 %} Pizze {% endblock %}</h1>
+    {% for pizza in pizze %}
+        <div class='pizza'>
+            <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }} €</h3>
+            <label for="n_pezzi_p">N. pezzi:
+            </label>
+            <input type="number"
+            id="n_pezzi_p" name="n_pezzi_p"
+            min="1" max="10" value="0">
+        </div>
+    {% endfor %}
+
+    <h1>{% block title2 %} Bevande {% endblock %}</h1>
+    {% for bevanda in bevande %}
+        <div class='bevanda'>
+            <h3><strong>{{ bevanda[1] }}.</strong> <em><strong>{{ bevanda[0] }}</strong></em> ....{{ bevanda[2] }} €</h3>
+            <label for="n_pezzi_b">N. pezzi:
+            </label>
+            <input type="number"
+            id="n_pezzi_b" name="n_pezzi_b"
+            min="1" max="10" value="0">
+        </div>
+    {% endfor %}
+{% endblock %}
+
 {% block variable %}
     <h1>{% block title %} Nuova prenotazione {% endblock %}</h1>
     <form method="POST">
@@ -25,34 +51,6 @@
         </p>
 
         <p>
-            <label for="cod_pizza">Codice Pizza</label>
-            <input type="number" name="cod_pizza"
-                   placeholder="Codice Pizza">
-            </input>
-        </p>
-
-        <p>
-            <label for="n_pizze">Numero Pizze</label>
-            <input type="number" name="n_pizze"
-                   placeholder="Numero pizze">
-            </input>
-        </p>
-
-        <p>
-            <label for="cod_bevanda">Codice Bevanda</label>
-            <input type="number" name="cod_bevanda"
-                   placeholder="Codice Bevanda">
-            </input>
-        </p>
-
-        <p>
-            <label for="n_bevande">Numero Bevande</label>
-            <input type="number" name="n_bevande"
-                   placeholder="Numero Bevande">
-            </input>
-        </p>
-
-        <p>
             <label for="data">Data</label>
             <input type="date" name="data"
                    placeholder="Data">
@@ -69,18 +67,9 @@
         <p>
             <label for="cod_coupon">Codice Coupon</label>
             <input type="number" name="cod_coupon"
-                   placeholder="Codice Coupon">
+                   placeholder="Facoltativo">
         </p>
 
-        <p>
-        <label for="rich_partic">Richieste Particolari</label>
-        <br>
-        <textarea name="rich_partic"
-                  placeholder="Richieste Particolari"
-                  rows="15"
-                  cols="60"
-                  ></textarea>
-        </p>
         <p>
             <button type="submit">Invia Prenotazione</button>
         </p>
