@@ -2,57 +2,78 @@
 
 {% block variable %}
     <h1>{% block title %} Nuova prenotazione {% endblock %}</h1>
-    <form method="post">
+    <form method="POST">
         <p>
             <label for="nome">Nome Cliente</label>
-            <input type="text" name="nome_cliente"
+            <input type="text" name="nome"
                    placeholder="Nome Cliente">
             </input>
         </p>
 
         <p>
+            <label for="id_cliente">Codice Fiscale</label>
+            <input type="text" name="id_cliente"
+                   placeholder="Codice Fiscale">
+            </input>
+        </p>
+
+        <p>
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono"
+                   placeholder="Telefono">
+            </input>
+        </p>
+
+        <p>
             <label for="cod_pizza">Codice Pizza</label>
-            <input type="int" name="cod_pizza"
+            <input type="number" name="cod_pizza"
                    placeholder="Codice Pizza">
             </input>
         </p>
 
         <p>
             <label for="n_pizze">Numero Pizze</label>
-            <input type="int" name="num_pizze"
+            <input type="number" name="n_pizze"
                    placeholder="Numero pizze">
             </input>
         </p>
 
         <p>
             <label for="cod_bevanda">Codice Bevanda</label>
-            <input type="int" name="codice_bevanda"
+            <input type="number" name="cod_bevanda"
                    placeholder="Codice Bevanda">
             </input>
         </p>
 
         <p>
             <label for="n_bevande">Numero Bevande</label>
-            <input type="int" name="num_bevande"
+            <input type="number" name="n_bevande"
                    placeholder="Numero Bevande">
             </input>
         </p>
 
         <p>
-            <label for="dataora">Data e Ora</label>
-            <input type="datetime" name="data_ora"
-                   placeholder="Data e Ora">
+            <label for="data">Data</label>
+            <input type="date" name="data"
+                   placeholder="Data">
+            </input>
+        </p>
+
+        <p>
+            <label for="orario">Orario</label>
+            <input type="text" name="orario"
+                   placeholder="Orario">
             </input>
         </p>
 
         <p>
             <label for="cod_coupon">Codice Coupon</label>
-            <input type="int" name="codice_coupon"
+            <input type="number" name="cod_coupon"
                    placeholder="Codice Coupon">
         </p>
 
         <p>
-        <label for="richieste_particolari">Richieste Particolari</label>
+        <label for="rich_partic">Richieste Particolari</label>
         <br>
         <textarea name="rich_partic"
                   placeholder="Richieste Particolari"
