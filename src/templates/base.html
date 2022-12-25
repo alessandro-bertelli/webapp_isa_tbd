@@ -12,7 +12,7 @@
         }
         nav indice {
             color: #d64161;
-            font-size: 1em;
+            font-size: 0.3em;
             margin-left: 50px;
             text-decoration: none;
         }
@@ -35,9 +35,9 @@
 <body>
     <nav>
         <a href="{{ url_for('index') }}"><strong>PIZZApp       |</strong></a>
-        <indice href="nuova-prenotazione">Nuova prenotazione       |</indice>
-        <indice href="modifica-prenotazione">Modifica prenotazione       |</indice>
-        <indice href="cancella-prenotazione">Cancella prenotazione       |</indice>
+        <a href="{{ url_for('new_pren') }}"><indice><strong>| Nuova prenotazione    |</strong></indice></a>
+        <a href="modifica-prenotazione"><indice><strong>| Modifica prenotazione    |</strong></indice></a>
+        <a href="cancella-prenotazione"><indice><strong>| Cancella prenotazione    |</strong></indice></a>
     </nav>
     <hr>
     <div class="parent">
