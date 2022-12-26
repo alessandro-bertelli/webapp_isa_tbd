@@ -36,8 +36,8 @@
     <nav>
         <a href="{{ url_for('index') }}"><strong>PIZZApp       |</strong></a>
         <a href="{{ url_for('new_pren') }}"><indice><strong>| Nuova prenotazione    |</strong></indice></a>
-        <a href="modifica-prenotazione"><indice><strong>| Modifica prenotazione    |</strong></indice></a>
-        <a href="cancella-prenotazione"><indice><strong>| Cancella prenotazione    |</strong></indice></a>
+        <a href="{{ url_for('mod_pren') }}"><indice><strong>| Modifica prenotazione    |</strong></indice></a>
+        <a href="{{ url_for('del_pren') }}"><indice><strong>| Cancella prenotazione    |</strong></indice></a>
     </nav>
     <hr>
     <div class="parent">
