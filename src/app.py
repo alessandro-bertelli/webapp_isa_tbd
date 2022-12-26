@@ -21,9 +21,11 @@ def index():
     pizze = cur.fetchall()
     cur.execute('SELECT * FROM bevanda;')
     bevande = cur.fetchall()
+    cur.execute('SELECT * FROM ingred_pizza;')
+    ingredienti = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', pizze=pizze, bevande=bevande)
+    return render_template('index.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
 
 @app.route('/new_pren/', methods=('GET', 'POST'))
 def new_pren():
@@ -48,9 +50,11 @@ def new_pren():
         pizze = cur.fetchall()
         cur.execute('SELECT * FROM bevanda;')
         bevande = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza;')
+        ingredienti = cur.fetchall()
         cur.close()
         conn.close()
-        return render_template('new_pren.html', pizze=pizze, bevande=bevande)
+        return render_template('new_pren.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
 
 @app.route('/mod_pren/', methods=('GET', 'POST'))
 def mod_pren():
@@ -75,9 +79,11 @@ def mod_pren():
         pizze = cur.fetchall()
         cur.execute('SELECT * FROM bevanda;')
         bevande = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza;')
+        ingredienti = cur.fetchall()
         cur.close()
         conn.close()
-        return render_template('mod_pren.html', pizze=pizze, bevande=bevande)
+        return render_template('mod_pren.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
 
 @app.route('/del_pren/', methods=('GET', 'POST'))
 def del_pren():

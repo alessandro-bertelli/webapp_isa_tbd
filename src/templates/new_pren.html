@@ -5,11 +5,23 @@
     {% for pizza in pizze %}
         <div class='pizza'>
             <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }} €</h3>
-            <label for="n_pezzi_p">N. pezzi:
+            {% for ingrediente in ingredienti %}
+                <div class='ingrediente'>
+                    <font size="1"><script>
+                        n_pizza = {{ pizza[1] }};
+                        var ingred = new String("{{ ingrediente[0] }}");
+                        pizza_ingred = {{ ingrediente[1] }};
+                        if(n_pizza == pizza_ingred){
+                                document.write(ingred);
+                        }
+                    </script></font>
+                </div>
+            {% endfor %}
+            <br><label for="n_pezzi_p">N. pezzi:
             </label>
             <input type="number"
             id="n_pezzi_p" name="n_pezzi_p"
-            min="1" max="10" value="0">
+            min="1" max="10" value="0"><br>
         </div>
     {% endfor %}
 
