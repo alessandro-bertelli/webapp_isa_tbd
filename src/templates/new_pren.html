@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block menu %}
+{% block sx %}
     <h1>{% block title1 %} Pizze {% endblock %}</h1>
     {% for pizza in pizze %}
         <div class='pizza'>
@@ -26,7 +26,7 @@
     {% endfor %}
 {% endblock %}
 
-{% block variable %}
+{% block dx %}
     <h1>{% block title %} Nuova prenotazione {% endblock %}</h1>
     <form method="POST">
         <p>
