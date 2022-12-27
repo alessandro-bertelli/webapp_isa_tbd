@@ -2,6 +2,11 @@
 
 {% block sx %}
     <h1>{% block title1 %} Pizze {% endblock %}</h1>
+    <script>
+        var i = 0;
+        n_p_p = new Array();
+        cod_p = new Array();
+    </script>
     {% for pizza in pizze %}
         <div class='pizza'>
             <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }} €</h3>
@@ -22,6 +27,14 @@
             <input type="number"
             id="n_pezzi_p" name="n_pezzi_p"
             min="1" max="10" value="0"><br>
+
+            <script>
+                if(n_pezzi_p > 0){
+                    n_p_p[i] = n_pezzi_p;
+                    cod_p[i] = {{ pizza[1] }}
+                    i++;
+                }
+            </script>
         </div>
     {% endfor %}
 
