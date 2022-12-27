@@ -84,14 +84,14 @@ def create():
         return render_template('create.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
 
 
-# PAGINA /edit/ - funzione eduit()
+# PAGINA /update/ - funzione eduit()
 # Connessione al database
 # INSERT dei dati necessari per identificare la prenotazione nel database e aggiornarla
 # SELECT di pizze, bevande e ingredienti per listino in create.html
 
-@app.route('/edit/', methods=('GET', 'POST'))
+@app.route('/update/', methods=('GET', 'POST'))
 
-def edit():
+def update():
     conn = get_db_connection()
     if request.method == 'POST':
         id_pren = request.form['id_pren']
@@ -101,12 +101,9 @@ def edit():
         orario = request.form['orario']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
-        if telefono != 0:
-            cur.execute ("""UPDATE cliente SET telefono=%s WHERE cod_fiscale=%s""", (telefono, cod_fis))
-        if data != 0:
-            cur.execute ("""UPDATE prenotazione SET data=%s WHERE id_prenotazione=%s""", (data, id_pren))
-        if orario != 0:
-            cur.execute ("""UPDATE prenotazione SET orario=%s WHERE id_prenotazione=%s""", (orario, id_pren))
+        cur.execute ('UPDATE cliente SET telefono=%s WHERE cod_fiscale=%s', (telefono, cod_fis))
+        cur.execute ('UPDATE prenotazione SET data=%s WHERE id_prenotazione=%s', (data, id_pren))
+        cur.execute ('UPDATE prenotazione SET orario=%s WHERE id_prenotazione=%s', (orario, id_pren))
         conn.commit()
         cur.close()
         conn.close()
@@ -121,7 +118,7 @@ def edit():
         ingredienti = cur.fetchall()
         cur.close()
         conn.close()
-        return render_template('edit.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
+        return render_template('update.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
 
 
 # PAGINA /delete/ - funzione delete()
