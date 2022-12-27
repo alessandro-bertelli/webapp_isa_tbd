@@ -57,16 +57,16 @@ def create():
         cod_fiscale = request.form['cod_fiscale']
         data = request.form['data']
         orario = request.form['orario']
-        n_p_p = request.form['n_p_p']
-        cod_p = request.form['cod_p']
+        # n_p_p = request.form['n_p_p']
+        # cod_p = request.form['cod_p']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
         cur.execute('INSERT INTO cliente (nome, telefono, cod_fiscale)''VALUES (%s, %s, %s)',(nome, telefono, cod_fiscale))
         cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s)',(data, orario, cod_fiscale))
-        for count in range(8):
-            if n_p_p[count]!=0:
-                cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_p_p[count], cod_p[count]))
-            count += 1
+        # for count in range(8):
+        #     if n_p_p[count]!=0:
+        #         cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_p_p[count], cod_p[count]))
+        #     count += 1
         conn.commit()
         cur.close()
         conn.close()
@@ -94,6 +94,22 @@ def create():
 def edit():
     conn = get_db_connection()
     if request.method == 'POST':
+        id_pren = request.form['id_pren']
+        cod_fis = request.form['cod_fis']
+        telefono = request.form['telefono']
+        data = request.form['data']
+        orario = request.form['orario']
+        cod_coupon = request.form['cod_coupon']
+        cur = conn.cursor()
+        if telefono != 0:
+            cur.execute ("""UPDATE cliente SET telefono=%s WHERE cod_fiscale=%s""", (telefono, cod_fis))
+        if data != 0:
+            cur.execute ("""UPDATE prenotazione SET data=%s WHERE id_prenotazione=%s""", (data, id_pren))
+        if orario != 0:
+            cur.execute ("""UPDATE prenotazione SET orario=%s WHERE id_prenotazione=%s""", (orario, id_pren))
+        conn.commit()
+        cur.close()
+        conn.close()
         return redirect(url_for('index'))
     else:
         cur = conn.cursor()
