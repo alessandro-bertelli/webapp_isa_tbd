@@ -128,4 +128,15 @@ def update():
 @app.route('/delete/', methods=('GET', 'POST'))
 
 def delete():
+    conn = get_db_connection()
+    if request.method == 'POST':
+        id_pren = request.form['id_pren']
+        cod_fis = request.form['cod_fis']
+        cur=conn.cursor()
+        cur.execute("DELETE FROM prenotazione WHERE id_prenotazione=%s", [id_pren])
+        cur.execute("DELETE FROM cliente WHERE cod_fiscale=%s", [cod_fis])
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('index'))
     return render_template('delete.html')
