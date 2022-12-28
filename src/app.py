@@ -57,16 +57,34 @@ def create():
         cod_fiscale = request.form['cod_fiscale']
         data = request.form['data']
         orario = request.form['orario']
-        # n_p_p = request.form['n_p_p']
-        # cod_p = request.form['cod_p']
+        n_pezzi_p1 = request.form['n_pezzi_p1']
+        n_pezzi_p2 = request.form['n_pezzi_p2']
+        n_pezzi_p3 = request.form['n_pezzi_p3']
+        n_pezzi_p4 = request.form['n_pezzi_p4']
+        n_pezzi_p5 = request.form['n_pezzi_p5']
+        n_pezzi_p6 = request.form['n_pezzi_p6']
+        n_pezzi_p7 = request.form['n_pezzi_p7']
+        n_pezzi_p8 = request.form['n_pezzi_p8']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
         cur.execute('INSERT INTO cliente (nome, telefono, cod_fiscale)''VALUES (%s, %s, %s)',(nome, telefono, cod_fiscale))
         cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s)',(data, orario, cod_fiscale))
-        # for count in range(8):
-        #     if n_p_p[count]!=0:
-        #         cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_p_p[count], cod_p[count]))
-        #     count += 1
+        if n_pezzi_p1!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p1, 1))
+        if n_pezzi_p2!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p2, 2))
+        if n_pezzi_p3!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p3, 3))
+        if n_pezzi_p4!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p4, 4))
+        if n_pezzi_p5!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p5, 5))
+        if n_pezzi_p6!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p6, 6))
+        if n_pezzi_p7!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p7, 7))
+        if n_pezzi_p8!=0:
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p8, 8))
         conn.commit()
         cur.close()
         conn.close()
@@ -77,11 +95,25 @@ def create():
         pizze = cur.fetchall()
         cur.execute('SELECT * FROM bevanda;')
         bevande = cur.fetchall()
-        cur.execute('SELECT * FROM ingred_pizza;')
-        ingredienti = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 1;')
+        ingredienti1 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 2;')
+        ingredienti2 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 3;')
+        ingredienti3 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 4;')
+        ingredienti4 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 5;')
+        ingredienti5 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 6;')
+        ingredienti6 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 7;')
+        ingredienti7 = cur.fetchall()
+        cur.execute('SELECT * FROM ingred_pizza WHERE codice_pizza = 8;')
+        ingredienti8 = cur.fetchall()
         cur.close()
         conn.close()
-        return render_template('create.html', pizze=pizze, bevande=bevande, ingredienti=ingredienti)
+        return render_template('create.html', pizze=pizze, bevande=bevande, ingredienti1=ingredienti1, ingredienti2=ingredienti2, ingredienti3=ingredienti3, ingredienti4=ingredienti4, ingredienti5=ingredienti5, ingredienti6=ingredienti6, ingredienti7=ingredienti7, ingredienti8=ingredienti8)
 
 
 # PAGINA /update/ - funzione eduit()

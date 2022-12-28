@@ -2,39 +2,120 @@
 
 {% block sx %}
     <h1>{% block title1 %} Pizze {% endblock %}</h1>
-    <script>
-        var i = 0;
-        n_p_p = new Array();
-        cod_p = new Array();
-    </script>
     {% for pizza in pizze %}
         <div class='pizza'>
             <h3><strong>{{ pizza[1] }}.</strong> <em><strong>{{ pizza[0] }}</strong></em> ....{{ pizza[2] }} €</h3>
-            {% for ingrediente in ingredienti %}
-                <div class='ingrediente'>
-                    <font size="1"><script>
-                        n_pizza = {{ pizza[1] }};
-                        var ingred = new String("{{ ingrediente[0] }}");
-                        pizza_ingred = {{ ingrediente[1] }};
-                        if(n_pizza == pizza_ingred){
-                                document.write(ingred);
-                        }
-                    </script></font>
-                </div>
-            {% endfor %}
-            <br><label for="n_pezzi_p">N. pezzi:
-            </label>
-            <input type="number"
-            id="n_pezzi_p" name="n_pezzi_p"
-            min="1" max="10" value="0"><br>
-
-            <script>
-                if(n_pezzi_p > 0){
-                    n_p_p[i] = n_pezzi_p;
-                    cod_p[i] = {{ pizza[1] }}
-                    i++;
-                }
-            </script>
+            {% if pizza[1] == 1 %}
+                {% for ingrediente1 in ingredienti1 %}
+                    <div class='ingrediente1'>
+                        <font size="1">{{ ingrediente1[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                        <br><label for="n_pezzi_p1">N. pezzi:</label>
+                        <input type="number"
+                        id="n_pezzi_p1" name="n_pezzi_p1"
+                        min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 2 %}
+                {% for ingrediente2 in ingredienti2 %}
+                    <div class='ingrediente2'>
+                        <font size="1">{{ ingrediente2[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p2">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p2" name="n_pezzi_p2"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 3 %}
+                {% for ingrediente3 in ingredienti3 %}
+                    <div class='ingrediente3'>
+                        <font size="1">{{ ingrediente3[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p3">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p3" name="n_pezzi_p3"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 4 %}
+                {% for ingrediente4 in ingredienti4 %}
+                    <div class='ingrediente4'>
+                        <font size="1">{{ ingrediente4[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p4">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p4" name="n_pezzi_p4"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 5 %}
+                {% for ingrediente5 in ingredienti5 %}
+                    <div class='ingrediente5'>
+                        <font size="1">{{ ingrediente5[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p5">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p5" name="n_pezzi_p5"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 6 %}
+                {% for ingrediente6 in ingredienti6 %}
+                    <div class='ingrediente6'>
+                        <font size="1">{{ ingrediente6[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p6">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p6" name="n_pezzi_p6"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 7 %}
+                {% for ingrediente7 in ingredienti7 %}
+                    <div class='ingrediente7'>
+                        <font size="1">{{ ingrediente7[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p7">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p7" name="n_pezzi_p7"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
+            {% if pizza[1] == 8 %}
+                {% for ingrediente8 in ingredienti8 %}
+                    <div class='ingrediente8'>
+                        <font size="1">{{ ingrediente8[0]}}</font>
+                    </div>
+                {% endfor %}
+                <form method="POST">
+                    <br><label for="n_pezzi_p8">N. pezzi:
+                    </label>
+                    <input type="number"
+                    id="n_pezzi_p8" name="n_pezzi_p8"
+                    min="1" max="10" value="0"><br>
+                </form>
+            {% endif %}
         </div>
     {% endfor %}
 
