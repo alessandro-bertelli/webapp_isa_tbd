@@ -68,23 +68,24 @@ def create():
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
         cur.execute('INSERT INTO cliente (nome, telefono, cod_fiscale)''VALUES (%s, %s, %s)',(nome, telefono, cod_fiscale))
-        cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s)',(data, orario, cod_fiscale))
+        cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s) RETURNING id_prenotazione',(data, orario, cod_fiscale))
+        prenotazione_id = cur.fetchone()[0]
         if n_pezzi_p1!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p1, 1))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p1, prenotazione_id, 1))
         if n_pezzi_p2!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p2, 2))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p2, prenotazione_id, 2))
         if n_pezzi_p3!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p3, 3))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p3, prenotazione_id, 3))
         if n_pezzi_p4!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p4, 4))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p4, prenotazione_id, 4))
         if n_pezzi_p5!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p5, 5))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p5, prenotazione_id, 5))
         if n_pezzi_p6!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p6, 6))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p6, prenotazione_id, 6))
         if n_pezzi_p7!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p7, 7))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p7, prenotazione_id, 7))
         if n_pezzi_p8!=0:
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_pezzi_p8, 8))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p8, prenotazione_id, 8))
         conn.commit()
         cur.close()
         conn.close()
