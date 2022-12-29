@@ -68,11 +68,6 @@
     {% for bevanda in bevande %}
         <div class='bevanda'>
             <h3><strong>{{ bevanda[1] }}.</strong> <em><strong>{{ bevanda[0] }}</strong></em> ....{{ bevanda[2] }} €</h3>
-            <label for="n_pezzi_b">N. pezzi:
-            </label>
-            <input type="number"
-            id="n_pezzi_b" name="n_pezzi_b"
-            min="1" max="10" value="0">
         </div>
     {% endfor %}
 {% endblock %}
@@ -81,14 +76,14 @@
     <h1>{% block title %} Nuova prenotazione {% endblock %}</h1>
     <form method="POST">
         <p>
-            <label for="nome">Nome Cliente</label>
+            <label for="nome">Nome Cliente*</label>
             <input type="text" name="nome"
                    placeholder="Nome Cliente">
             </input>
         </p>
 
         <p>
-            <label for="cod_fiscale">Codice Fiscale</label>
+            <label for="cod_fiscale">Codice Fiscale*</label>
             <input type="text" name="cod_fiscale"
                    placeholder="Codice Fiscale">
             </input>
@@ -102,14 +97,14 @@
         </p>
 
         <p>
-            <label for="data">Data</label>
+            <label for="data">Data*</label>
             <input type="date" name="data"
                    placeholder="Data">
             </input>
         </p>
 
         <p>
-            <label for="orario">Orario</label>
+            <label for="orario">Orario*</label>
             <input type="time" name="orario"
                    placeholder="hh:mm">
             </input>
@@ -117,61 +112,139 @@
 
         <p>============================================</p>
 
+        <h1>{% block title_ordine %} <i><strong>INSERISCI QUI IL TUO ORDINE</strong></i> {% endblock %}</h1><br>
+
+        <h2>{% block title_piz %} <i><strong>Pizze:</strong></i> {% endblock %}</h1>
+
         <p>
-            <label for="n_pezzi_p1">N. pezzi PIZZA 1:</label>
+            <label for="n_pezzi_p1">Q.tà <i><strong>"Marinara"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p1" name="n_pezzi_p1"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p1" name="n_pezzi_p1" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p2">N. pezzi PIZZA 2:</label>
+            <label for="n_pezzi_p2">Q.tà <i><strong>"Margherita"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p2" name="n_pezzi_p2"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p2" name="n_pezzi_p2" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p3">N. pezzi PIZZA 3:</label>
+            <label for="n_pezzi_p3">Q.tà <i><strong>"Fileto"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p3" name="n_pezzi_p3"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p3" name="n_pezzi_p3" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p4">N. pezzi PIZZA 4:</label>
+            <label for="n_pezzi_p4">Q.tà <i><strong>"Salsiccia e Friarielli"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p4" name="n_pezzi_p4"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p4" name="n_pezzi_p4" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p5">N. pezzi PIZZA 5:</label>
+            <label for="n_pezzi_p5">Q.tà <i><strong>"Ripieno al forno"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p5" name="n_pezzi_p5"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p5" name="n_pezzi_p5" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p6">N. pezzi PIZZA 6:</label>
+            <label for="n_pezzi_p6">Q.tà <i><strong>"Ripieno fritto"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p6" name="n_pezzi_p6"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p6" name="n_pezzi_p6" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p7">N. pezzi PIZZA 7:</label>
+            <label for="n_pezzi_p7">Q.tà <i><strong>"4 formaggi"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p7" name="n_pezzi_p7"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p7" name="n_pezzi_p7" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
 
         <p>
-            <label for="n_pezzi_p8">N. pezzi PIZZA 8:</label>
+            <label for="n_pezzi_p8">Q.tà <i><strong>"Diavola"</strong></i>:</label>
             <input type="number"
-            id="n_pezzi_p8" name="n_pezzi_p8"
-            min="0" max="10" value="0"><br>
+            id="n_pezzi_p8" name="n_pezzi_p8" style="width: 40px;"
+            min="0" max="30" value="0"><br>
         </p>
+
+        <br><h2>{% block title_bev %} <i><strong>Bevande:</strong></i> {% endblock %}</h1>
+
+        <p>
+            <label for="n_pezzi_b1">Q.tà <i><strong>"Acqua Naturale Bottiglia di Vetro"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b1" name="n_pezzi_b1" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b2">Q.tà <i><strong>"Acqua Frizzante Bottiglia di Vetro"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b2" name="n_pezzi_b2" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b3">Q.tà <i><strong>"Coca-cola in Bottiglia di Vetro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b3" name="n_pezzi_b3" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b4">Q.tà <i><strong>"Fanta in Bottiglia di Vetro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b4" name="n_pezzi_b4" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b5">Q.tà <i><strong>"Sprite in Bottiglia di Vetro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b5" name="n_pezzi_b5" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b6">Q.tà <i><strong>"Tè al Limone in Bottiglia di Vetro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b6" name="n_pezzi_b6" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b7">Q.tà <i><strong>"Tè alla Pesca in Bottiglia di Vetro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b7" name="n_pezzi_b7" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b8">Q.tà <i><strong>"N'Artigiana Oro 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b8" name="n_pezzi_b8" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b9">Q.tà <i><strong>"N'Artigiana Doppio Malto 33cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b9" name="n_pezzi_b9" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+
+        <p>
+            <label for="n_pezzi_b10">Q.tà <i><strong>"San Biagio Monasta Ambrata 75cl"</strong></i>:</label>
+            <input type="number"
+            id="n_pezzi_b10" name="n_pezzi_b10" style="width: 40px;"
+            min="0" max="30" value="0"><br>
+        </p>
+            
+        <p>============================================</p> 
 
         <p>
             <label for="cod_coupon">Codice Coupon</label>
