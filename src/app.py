@@ -54,15 +54,15 @@ def create():
         count = 0
         nome = request.form['nome']
         telefono = request.form['telefono']
-        cod_fiscale = request.form['cod_fiscale']
         data = request.form['data']
         orario = request.form['orario']
         # n_p_p = request.form['n_p_p']
         # cod_p = request.form['cod_p']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
-        cur.execute('INSERT INTO cliente (nome, telefono, cod_fiscale)''VALUES (%s, %s, %s)',(nome, telefono, cod_fiscale))
-        cur.execute('INSERT INTO prenotazione (data, orario, cod_fiscale)''VALUES (%s, %s, %s)',(data, orario, cod_fiscale))
+        cur.execute('INSERT INTO cliente (nome, telefono)''VALUES (%s, %s) RETURNING idcliente',(nome, telefono))
+        idcliente = cur.fetchone()[0]
+        cur.execute('INSERT INTO prenotazione (data, orario, idcliente)''VALUES (%s, %s, %s)',(data, orario, idcliente))
         # for count in range(8):
         #     if n_p_p[count]!=0:
         #         cur.execute('INSERT INTO ordine_pizza (n_pezzi, codice_pizza)''VALUES (%s, %s)',(n_p_p[count], cod_p[count]))
@@ -95,19 +95,20 @@ def update():
     conn = get_db_connection()
     if request.method == 'POST':
         id_pren = request.form['id_pren']
-        cod_fis = request.form['cod_fis']
         telefono = request.form['telefono']
         data = request.form['data']
         orario = request.form['orario']
         cod_coupon = request.form['cod_coupon']
         cur = conn.cursor()
-        cur.execute ('UPDATE cliente SET telefono=%s WHERE cod_fiscale=%s', (telefono, cod_fis))
+        cur.execute ('SELECT p.idcliente FROM prenotazione p LEFT JOIN cliente c ON p.idcliente = c.idcliente WHERE p.id_prenotazione=%s',(id_pren, ))
+        idcliente = cur.fetchone()[0]
+        cur.execute ('UPDATE cliente SET telefono=%s WHERE idcliente=%s', (telefono, idcliente))
         cur.execute ('UPDATE prenotazione SET data=%s WHERE id_prenotazione=%s', (data, id_pren))
         cur.execute ('UPDATE prenotazione SET orario=%s WHERE id_prenotazione=%s', (orario, id_pren))
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('order'))
     else:
         cur = conn.cursor()
         cur.execute('SELECT * FROM pizza;')
@@ -131,10 +132,11 @@ def delete():
     conn = get_db_connection()
     if request.method == 'POST':
         id_pren = request.form['id_pren']
-        cod_fis = request.form['cod_fis']
         cur=conn.cursor()
+        cur.execute ('SELECT p.idcliente FROM prenotazione p LEFT JOIN cliente c ON p.idcliente = c.idcliente WHERE p.id_prenotazione=%s',(id_pren, ))
+        idcliente = cur.fetchone()[0]
         cur.execute("DELETE FROM prenotazione WHERE id_prenotazione=%s", [id_pren])
-        cur.execute("DELETE FROM cliente WHERE cod_fiscale=%s", [cod_fis])
+        cur.execute("DELETE FROM cliente WHERE idcliente=%s", [idcliente])
         conn.commit()
         cur.close()
         conn.close()
