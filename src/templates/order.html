@@ -16,23 +16,15 @@
             margin-left: 50px;
             text-decoration: none;
         }
-        .parent {
-            display: flex;
+        .corpo {
             width: 100%;
-        }
-        .sx {
-            flex: 1;
             border: 0.3px solid rgb(7, 79, 84) ;
             margin: 7px;
             color: rgb(7, 79, 84);
+            line-height: 0.5;
         }
-        .dx {
-            flex: 1;
-            border: 0.1px solid rgb(7, 79, 84);
-            margin:7px;
-            color: rgb(7, 79, 84);
-            font: size 1px;
-        }
+
+
     </style>
 </head>
 <body>
@@ -43,9 +35,36 @@
         <a href="{{ url_for('delete') }}"><indice><strong>| Cancella prenotazione    |</strong></indice></a>
     </nav>
     <hr>
-    <div class="parent">
-        <div align="center" class="sx">{% block sx %}{% endblock %}<br><br></div>
-        <div align="center" class="dx">{% block dx %}{% endblock %}<br><br></div>
+
+    {% block corpo %}
+
+    <div class="corpo">
+        <div align="center"><p><h1><strong>RIEPILOGO PRENOTAZIONE</strong></h1></p></div>
+        <h5>Cliente:</h5>
+        <h5>Codice Fiscale:</h5>
+        <h5>Telefono:</h5>
+        <h5>Data e ora consegna:</h5>
+        <table>
+            <tr>
+                <th>Prodotto</th>
+                <th>Q.tà</th>
+                <th>Prezzo</th>
+            </tr>
+            <tr>
+                <td>
+                    <h6>sburo</h6>
+                </td>
+                <td align="center">
+                    <h6>sculo</h6>
+                </td>
+                <td align="right">
+                    <h6>mulo</h6>
+                </td>
+            </tr>
+        </table>
     </div>
+
+    {% endblock %}
+
 </body>
 </html>

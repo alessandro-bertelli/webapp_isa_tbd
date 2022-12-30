@@ -70,7 +70,7 @@ def create():
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('order'))
     else:
         cur = conn.cursor()
         cur.execute('SELECT * FROM pizza;')
@@ -140,3 +140,17 @@ def delete():
         conn.close()
         return redirect(url_for('index'))
     return render_template('delete.html')
+
+
+# PAGINA /order/ - funzione order()
+# Connessione al database
+# SELECT tutte le informazioni necessarie per il riepilogo dell'ordine.
+
+@app.route('/order/')
+
+def order():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.close()
+    conn.close()
+    return render_template('order.html')
