@@ -40,28 +40,37 @@
 
     <div class="corpo">
         <div align="center"><p><h1><strong>RIEPILOGO PRENOTAZIONE</strong></h1></p></div>
-        <h5>Cliente:</h5>
-        <h5>Codice Fiscale:</h5>
-        <h5>Telefono:</h5>
-        <h5>Data e ora consegna:</h5>
-        <table>
+        {% for dato in dati %}
+            <div class='dato'>
+                    <h5>Cliente: </h5><h4><i><strong>{{ dato[4] }}</strong></i></h4>
+                    <h5>Telefono: <i><strong>{{ dato[5] }}</strong></i></h5>
+                    <h5>Data e ora consegna: <i><strong>{{ dato[1] }} , {{ dato[2] }}</strong></i></h5>
+            </div>
+        {% endfor %}
+        <br><br><table style="width:100%">
             <tr>
-                <th>Prodotto</th>
+                <th align="left" style="width:50%">Prodotto</th>
                 <th>Q.tà</th>
-                <th>Prezzo</th>
+                <th align="center">P.Unit.</th>
+                <th align="right"><strong>Prezzo totale</strong></th>
             </tr>
+            {% for pizza in pizze %}
             <tr>
                 <td>
-                    <h6>sburo</h6>
+                    <h6>{{ pizza[7] }}</h6>
+                </td>
+                <td>
+                    <h6>{{ pizza[4] }} x</h6>
                 </td>
                 <td align="center">
-                    <h6>sculo</h6>
+                    <h6>{{ pizza[9] }}</h6>
                 </td>
                 <td align="right">
                     <h6>mulo</h6>
                 </td>
             </tr>
-        </table>
+            {% endfor %}
+        </table><br><br>
     </div>
 
     {% endblock %}
