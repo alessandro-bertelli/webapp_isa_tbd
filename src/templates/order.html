@@ -24,10 +24,12 @@
             line-height: 0.5;
         }
 
-
     </style>
 </head>
 <body>
+
+    {% set accumulator = namespace(totp=0, totb=0) %}
+
     <nav>
         <a href="{{ url_for('index') }}"><strong>PIZZApp       |</strong></a>
         <a href="{{ url_for('create') }}"><indice><strong>| Nuova prenotazione    |</strong></indice></a>
@@ -47,29 +49,86 @@
                     <h5>Data e ora consegna: <i><strong>{{ dato[1] }} , {{ dato[2] }}</strong></i></h5>
             </div>
         {% endfor %}
-        <br><br><table style="width:100%">
+
+        <p>=================================================</p>
+        
+        <br><br><table style="width:50%">
             <tr>
                 <th align="left" style="width:50%">Prodotto</th>
                 <th>Q.tà</th>
                 <th align="center">P.Unit.</th>
                 <th align="right"><strong>Prezzo totale</strong></th>
             </tr>
-            {% for pizza in pizze %}
             <tr>
                 <td>
-                    <h6>{{ pizza[7] }}</h6>
-                </td>
-                <td>
-                    <h6>{{ pizza[4] }} x</h6>
-                </td>
-                <td align="center">
-                    <h6>{{ pizza[9] }}</h6>
-                </td>
-                <td align="right">
-                    <h6>mulo</h6>
+                    <h5>PIZZE</h5>
                 </td>
             </tr>
+            {% for pizza in pizze %}
+                <tr>
+                    <td>
+                        <h5><i>{{ pizza[7] }}</i></h5>
+                    </td>
+                    <td align="center">
+                        <h5>{{ pizza[4] }} x</h5>
+                    </td>
+                    <td align="center">
+                        <h5>{{ pizza[9] }}</h5>
+                    </td>
+                    
+                    <td align="right">
+                        <p><strong><i>=  </i>{{ pizza[4]*pizza[9] }} €</strong></p>
+                        {% set accumulator.totp = accumulator.totp + pizza[4]*pizza[9] %}
+                </tr>
             {% endfor %}
+            <tr>
+                <td>
+                    <h5>BEVANDE</h5>
+                </td>
+            </tr>
+            {% for bevanda in bevande %}
+                <tr>
+                    <td>
+                        <h5><i>{{ bevanda[7] }}</i></h5>
+                    </td>
+                    <td align="center">
+                        <h5>{{ bevanda[4] }} x</h5>
+                    </td>
+                    <td align="center">
+                        <h5>{{ bevanda[9] }}</h5>
+                    </td>
+                    <td align="right">
+                        <p><strong><i>=  </i>{{ bevanda[4] * bevanda[9] }} €</strong></p>
+                        {% set accumulator.totb = accumulator.totb + bevanda[4]*bevanda[9]  %}
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <h5>_______________________________________________</h5>
+                </td>
+                <td>
+                    <h5>_____________</h5>
+                </td>
+                <td>
+                    <h5>_________________</h5>
+                </td>
+                <td>
+                    <h5>____________________</h5>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td align="center"></td>
+                <td align="center">
+                    <h3>TOTALE</h3>
+                </td>
+                <td align="right">
+                    <h2><strong><i>{{ accumulator.totp + accumulator.totb }} €</i></strong></h2>
+                </td>
+            </tr>
+
         </table><br><br>
     </div>
 

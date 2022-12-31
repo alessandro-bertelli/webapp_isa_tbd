@@ -30,9 +30,9 @@ def get_db_connection():
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM pizza;')
+    cur.execute('SELECT * FROM pizza ORDER BY codice_pizza;')
     pizze = cur.fetchall()
-    cur.execute('SELECT * FROM bevanda;')
+    cur.execute('SELECT * FROM bevanda ORDER BY codice_bevanda;')
     bevande = cur.fetchall()
     cur.execute('SELECT * FROM ingred_pizza;')
     ingredienti = cur.fetchall()
@@ -79,43 +79,43 @@ def create():
         cur.execute('INSERT INTO cliente (nome, telefono)''VALUES (%s, %s) RETURNING idcliente',(nome, telefono))
         idcliente = cur.fetchone()[0]
         cur.execute('INSERT INTO prenotazione (data, orario, idcliente)''VALUES (%s, %s, %s) RETURNING id_prenotazione',(data, orario, idcliente))
-        prenotazione_id = cur.fetchone()[0]
+        id_prenotazione = cur.fetchone()[0]
         if n_pezzi_p1!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p1, prenotazione_id, 1))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p1, id_prenotazione, 1))
         if n_pezzi_p2!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p2, prenotazione_id, 2))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p2, id_prenotazione, 2))
         if n_pezzi_p3!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p3, prenotazione_id, 3))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p3, id_prenotazione, 3))
         if n_pezzi_p4!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p4, prenotazione_id, 4))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p4, id_prenotazione, 4))
         if n_pezzi_p5!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p5, prenotazione_id, 5))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p5, id_prenotazione, 5))
         if n_pezzi_p6!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p6, prenotazione_id, 6))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p6, id_prenotazione, 6))
         if n_pezzi_p7!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p7, prenotazione_id, 7))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p7, id_prenotazione, 7))
         if n_pezzi_p8!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p8, prenotazione_id, 8))
+            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p8, id_prenotazione, 8))
         if n_pezzi_b1!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b1, prenotazione_id, 1))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b1, id_prenotazione, 1))
         if n_pezzi_b2!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b2, prenotazione_id, 2))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b2, id_prenotazione, 2))
         if n_pezzi_b3!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b3, prenotazione_id, 3))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b3, id_prenotazione, 3))
         if n_pezzi_b4!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b4, prenotazione_id, 4))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b4, id_prenotazione, 4))
         if n_pezzi_b5!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b5, prenotazione_id, 5))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b5, id_prenotazione, 5))
         if n_pezzi_b6!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b6, prenotazione_id, 6))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b6, id_prenotazione, 6))
         if n_pezzi_b7!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b7, prenotazione_id, 7))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b7, id_prenotazione, 7))
         if n_pezzi_b8!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b8, prenotazione_id, 8))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b8, id_prenotazione, 8))
         if n_pezzi_b9!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b9, prenotazione_id, 9))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b9, id_prenotazione, 9))
         if n_pezzi_b10!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b10, prenotazione_id, 10))
+            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b10, id_prenotazione, 10))
         conn.commit()
         cur.close()
         conn.close()
@@ -174,9 +174,9 @@ def update():
         return redirect(url_for('order', id_prenotazione=id_prenotazione, **request.args))
     else:
         cur = conn.cursor()
-        cur.execute('SELECT * FROM pizza;')
+        cur.execute('SELECT * FROM pizza ORDER BY codice_pizza;')
         pizze = cur.fetchall()
-        cur.execute('SELECT * FROM bevanda;')
+        cur.execute('SELECT * FROM bevanda ORDER BY codice_bevanda;')
         bevande = cur.fetchall()
         cur.execute('SELECT * FROM ingred_pizza;')
         ingredienti = cur.fetchall()
