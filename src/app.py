@@ -51,7 +51,6 @@ def index():
 def create():
     conn = get_db_connection()
     if request.method == 'POST':
-        count = 0
         nome = request.form['nome']
         telefono = request.form['telefono']
         data = request.form['data']
@@ -119,7 +118,7 @@ def create():
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('order', id_prenotazione=id_prenotazione, **request.args))
+        return redirect(url_for('order', id_prenotazione=id_prenotazione, cod_coupon=cod_coupon, **request.args))
     else:
         cur = conn.cursor()
         cur.execute('SELECT * FROM pizza ORDER BY codice_pizza;')
@@ -147,7 +146,7 @@ def create():
         return render_template('create.html', pizze=pizze, bevande=bevande, ingredienti1=ingredienti1, ingredienti2=ingredienti2, ingredienti3=ingredienti3, ingredienti4=ingredienti4, ingredienti5=ingredienti5, ingredienti6=ingredienti6, ingredienti7=ingredienti7, ingredienti8=ingredienti8)
 
 
-# PAGINA /update/ - funzione eduit()
+# PAGINA /update/ - funzione update()
 # Connessione al database
 # INSERT dei dati necessari per identificare la prenotazione nel database e aggiornarla
 # SELECT di pizze, bevande e ingredienti per listino in create.html
@@ -228,7 +227,7 @@ def update():
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('order', id_prenotazione=id_prenotazione, **request.args))
+        return redirect(url_for('order', id_prenotazione=id_prenotazione, cod_coupon=cod_coupon, **request.args))
     else:
         cur = conn.cursor()
         cur.execute('SELECT * FROM pizza ORDER BY codice_pizza;')
@@ -290,6 +289,7 @@ def delete():
 
 def order():
     id_prenotazione = request.args.get('id_prenotazione')
+    cod_coupon = request.args.get('cod_coupon')
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute ('SELECT * FROM prenotazione p JOIN cliente c ON p.idcliente = c.idcliente WHERE p.id_prenotazione=%s',(id_prenotazione, ))
@@ -298,6 +298,10 @@ def order():
     pizze = cur.fetchall()
     cur.execute ('SELECT * FROM prenotazione p JOIN ordine_bevanda ob ON p.id_prenotazione = ob.id_prenotazione JOIN bevanda b ON ob.codice_bevanda = b.codice_bevanda WHERE p.id_prenotazione=%s',(id_prenotazione, ))
     bevande = cur.fetchall()
+    cur.execute ('SELECT * FROM coupon WHERE codice_sconto=%s', (cod_coupon, ))
+    coupons = cur.fetchall()
+    cur.execute("DELETE FROM coupon WHERE codice_sconto=%s", (cod_coupon, ))
+    conn.commit()
     cur.close()
     conn.close()
-    return render_template('order.html', dati=dati, pizze=pizze, bevande=bevande)
+    return render_template('order.html', dati=dati, pizze=pizze, bevande=bevande, coupons = coupons)

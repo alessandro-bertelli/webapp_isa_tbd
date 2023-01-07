@@ -146,6 +146,32 @@
                     </td>
                 </tr>
 
+                {% if cod_coupon != 0 %}
+                    {% for coupon in coupons %}
+                        <tr>
+                            <td><h5>Codice sconto {{ coupon[0] }}</h5></td>
+                            <td align="center"></td>
+                            <td align="center"></td>
+                            <td align="right">
+                                <h4><strong><i>- {{ coupon[1] }} €</i></strong></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td align="right">
+                                <h5>TOTALE</h5>
+                            </td>
+                            <td align="left">
+                                <h5>SCONTATO</h5>
+                            </td>
+                            <td align="right">
+                                <h2><strong><i>{{ accumulator.totp + accumulator.totb - coupon[1] }} €</i></strong></h2>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
             </table><br><br>
     </div>
 
