@@ -63,77 +63,10 @@ def index():
 @app.route('/create/', methods=('GET', 'POST'))
 
 def create():
-    conn = get_db_connection()
     if request.method == 'POST':
-        nome = request.form['nome']
-        telefono = request.form['telefono']
-        data = request.form['data']
-        orario = request.form['orario']
-        n_pezzi_p1 = request.form['n_pezzi_p1']
-        n_pezzi_p2 = request.form['n_pezzi_p2']
-        n_pezzi_p3 = request.form['n_pezzi_p3']
-        n_pezzi_p4 = request.form['n_pezzi_p4']
-        n_pezzi_p5 = request.form['n_pezzi_p5']
-        n_pezzi_p6 = request.form['n_pezzi_p6']
-        n_pezzi_p7 = request.form['n_pezzi_p7']
-        n_pezzi_p8 = request.form['n_pezzi_p8']
-        n_pezzi_b1 = request.form['n_pezzi_b1']
-        n_pezzi_b2 = request.form['n_pezzi_b2']
-        n_pezzi_b3 = request.form['n_pezzi_b3']
-        n_pezzi_b4 = request.form['n_pezzi_b4']
-        n_pezzi_b5 = request.form['n_pezzi_b5']
-        n_pezzi_b6 = request.form['n_pezzi_b6']
-        n_pezzi_b7 = request.form['n_pezzi_b7']
-        n_pezzi_b8 = request.form['n_pezzi_b8']
-        n_pezzi_b9 = request.form['n_pezzi_b9']
-        n_pezzi_b10 = request.form['n_pezzi_b10']
-        cod_coupon = request.form['cod_coupon']
-        cur = conn.cursor()
-        cur.execute('INSERT INTO cliente (nome, telefono)''VALUES (%s, %s) RETURNING idcliente',(nome, telefono))
-        idcliente = cur.fetchone()[0]
-        cur.execute('INSERT INTO prenotazione (data, orario, idcliente)''VALUES (%s, %s, %s) RETURNING id_prenotazione',(data, orario, idcliente))
-        id_prenotazione = cur.fetchone()[0]
-        if n_pezzi_p1!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p1, id_prenotazione, 1))
-        if n_pezzi_p2!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p2, id_prenotazione, 2))
-        if n_pezzi_p3!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p3, id_prenotazione, 3))
-        if n_pezzi_p4!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p4, id_prenotazione, 4))
-        if n_pezzi_p5!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p5, id_prenotazione, 5))
-        if n_pezzi_p6!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p6, id_prenotazione, 6))
-        if n_pezzi_p7!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p7, id_prenotazione, 7))
-        if n_pezzi_p8!="0":
-            cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p8, id_prenotazione, 8))
-        if n_pezzi_b1!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b1, id_prenotazione, 1))
-        if n_pezzi_b2!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b2, id_prenotazione, 2))
-        if n_pezzi_b3!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b3, id_prenotazione, 3))
-        if n_pezzi_b4!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b4, id_prenotazione, 4))
-        if n_pezzi_b5!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b5, id_prenotazione, 5))
-        if n_pezzi_b6!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b6, id_prenotazione, 6))
-        if n_pezzi_b7!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b7, id_prenotazione, 7))
-        if n_pezzi_b8!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b8, id_prenotazione, 8))
-        if n_pezzi_b9!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b9, id_prenotazione, 9))
-        if n_pezzi_b10!="0":
-            cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b10, id_prenotazione, 10))
-        conn.commit()
-        cur.close()
-        conn.close()
-        return redirect(url_for('order', id_prenotazione=id_prenotazione, cod_coupon=cod_coupon, **request.args))
+        return create_logic()
     else:
+        conn = get_db_connection()
         cur = conn.cursor()
         cur.execute('SELECT * FROM pizza ORDER BY codice_pizza;')
         pizze = cur.fetchall()
@@ -158,6 +91,78 @@ def create():
         cur.close()
         conn.close()
         return render_template('create.html', pizze=pizze, bevande=bevande, ingredienti1=ingredienti1, ingredienti2=ingredienti2, ingredienti3=ingredienti3, ingredienti4=ingredienti4, ingredienti5=ingredienti5, ingredienti6=ingredienti6, ingredienti7=ingredienti7, ingredienti8=ingredienti8)
+
+def create_logic():
+    conn = get_db_connection()
+    nome = request.form['nome']
+    telefono = request.form['telefono']
+    data = request.form['data']
+    orario = request.form['orario']
+    n_pezzi_p1 = request.form['n_pezzi_p1']
+    n_pezzi_p2 = request.form['n_pezzi_p2']
+    n_pezzi_p3 = request.form['n_pezzi_p3']
+    n_pezzi_p4 = request.form['n_pezzi_p4']
+    n_pezzi_p5 = request.form['n_pezzi_p5']
+    n_pezzi_p6 = request.form['n_pezzi_p6']
+    n_pezzi_p7 = request.form['n_pezzi_p7']
+    n_pezzi_p8 = request.form['n_pezzi_p8']
+    n_pezzi_b1 = request.form['n_pezzi_b1']
+    n_pezzi_b2 = request.form['n_pezzi_b2']
+    n_pezzi_b3 = request.form['n_pezzi_b3']
+    n_pezzi_b4 = request.form['n_pezzi_b4']
+    n_pezzi_b5 = request.form['n_pezzi_b5']
+    n_pezzi_b6 = request.form['n_pezzi_b6']
+    n_pezzi_b7 = request.form['n_pezzi_b7']
+    n_pezzi_b8 = request.form['n_pezzi_b8']
+    n_pezzi_b9 = request.form['n_pezzi_b9']
+    n_pezzi_b10 = request.form['n_pezzi_b10']
+    cod_coupon = request.form['cod_coupon']
+    cur = conn.cursor()
+    cur.execute('INSERT INTO cliente (nome, telefono)''VALUES (%s, %s) RETURNING idcliente',(nome, telefono))
+    idcliente = cur.fetchone()[0]
+    cur.execute('INSERT INTO prenotazione (data, orario, idcliente)''VALUES (%s, %s, %s) RETURNING id_prenotazione',(data, orario, idcliente))
+    id_prenotazione = cur.fetchone()[0]
+    if n_pezzi_p1!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p1, id_prenotazione, 1))
+    if n_pezzi_p2!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p2, id_prenotazione, 2))
+    if n_pezzi_p3!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p3, id_prenotazione, 3))
+    if n_pezzi_p4!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p4, id_prenotazione, 4))
+    if n_pezzi_p5!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p5, id_prenotazione, 5))
+    if n_pezzi_p6!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p6, id_prenotazione, 6))
+    if n_pezzi_p7!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p7, id_prenotazione, 7))
+    if n_pezzi_p8!="0":
+        cur.execute('INSERT INTO ordine_pizza (n_pezzi, id_prenotazione, codice_pizza)''VALUES (%s, %s, %s)',(n_pezzi_p8, id_prenotazione, 8))
+    if n_pezzi_b1!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b1, id_prenotazione, 1))
+    if n_pezzi_b2!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b2, id_prenotazione, 2))
+    if n_pezzi_b3!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b3, id_prenotazione, 3))
+    if n_pezzi_b4!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b4, id_prenotazione, 4))
+    if n_pezzi_b5!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b5, id_prenotazione, 5))
+    if n_pezzi_b6!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b6, id_prenotazione, 6))
+    if n_pezzi_b7!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b7, id_prenotazione, 7))
+    if n_pezzi_b8!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b8, id_prenotazione, 8))
+    if n_pezzi_b9!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b9, id_prenotazione, 9))
+    if n_pezzi_b10!="0":
+        cur.execute('INSERT INTO ordine_bevanda (n_pezzi, id_prenotazione, codice_bevanda)''VALUES (%s, %s, %s)',(n_pezzi_b10, id_prenotazione, 10))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect(url_for('order', id_prenotazione=id_prenotazione, cod_coupon=cod_coupon, **request.args))
+
 
 
 # PAGINA /update/ - funzione update()
