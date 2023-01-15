@@ -1,9 +1,6 @@
-import os
 import psycopg2
-import pytest
-from flask import Flask, request
+from flask import Flask
 from flask_testing import TestCase
-from flask.testing import FlaskClient
 
 class TestConfig(object):
     DATABASE_URI = "postgresql://alessandro:alessandro@localhost:5433/alessandro"
@@ -15,7 +12,3 @@ class BaseTestCase(TestCase):
         app.config.from_object(TestConfig)
         self.conn = psycopg2.connect(app.config['DATABASE_URI'])
         return app
-
-    @pytest.fixture
-    def app():
-        return create_app()

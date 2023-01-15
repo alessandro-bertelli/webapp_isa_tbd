@@ -1,17 +1,53 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} PIZZApp {% endblock %}</title>
+    <style>
+        nav a {
+            color: rgb(185, 55, 55);
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+        nav indice {
+            color: rgb(185, 55, 55);
+            font-size: 0.3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+        .parent {
+            width: 100%;
+            border: 0.3px solid rgb(7, 79, 84) ;
+            text-align: center;
+            margin: 7px;
+            color: rgb(7, 79, 84);
+        }
 
-{% block sx %}
-    <h1>{% block title %} Cancella prenotazione {% endblock %}</h1>
-    <form method="POST">
-        <div>
-            <label for="id_prenotazione">Inserire ID Prenotazione</label>
-            <input type="text" name="id_prenotazione"
-                placeholder="ID prenotazione">
-            </input>
-        </div><br>
-
-        <p>
-            <button type="submit" onclick="alert('Prenotazione cancellata. Arrivederci.')">Elimina Prenotazione</button>
-        </p>
-    </form>
-{% endblock %}
+    </style>
+</head>
+<body bgcolor="#ffcccc">
+    <nav>
+        <a href="{{ url_for('index') }}"><strong>PIZZApp       |</strong></a>
+        <a href="{{ url_for('create') }}"><indice><strong>| Nuova prenotazione    |</strong></indice></a>
+        <a href="{{ url_for('update') }}"><indice><strong>| Modifica prenotazione    |</strong></indice></a>
+        <a href="{{ url_for('delete') }}"><indice><strong>| Cancella prenotazione    |</strong></indice></a>
+    </nav>
+    <hr>
+    <div class="parent">
+        <h1 align="center">Cancella prenotazione</h1><br>
+        <form method="POST">
+            <div>
+                <label for="id_prenotazione">Inserire ID Prenotazione</label><br>
+                <input type="text" name="id_prenotazione"
+                    placeholder="ID prenotazione">
+                </input>
+            </div>
+    
+            <p>
+                <button type="submit" onclick="alert('Prenotazione cancellata. Arrivederci.')">Elimina Prenotazione</button>
+            </p>
+        </form>
+    </div>
+</body>
+</html>
