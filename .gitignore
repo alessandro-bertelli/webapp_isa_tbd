@@ -184,3 +184,7 @@ cython_debug/
 .ionide
 
 .vscode/settings.json
+
+*.gz
+
+*.aux
