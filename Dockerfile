@@ -20,5 +20,3 @@ RUN chmod +x test_start.sh
 RUN chmod +x src/start.sh
 
 EXPOSE 5000
-
-ENTRYPOINT ["./src/start.sh"]

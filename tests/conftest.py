@@ -3,7 +3,7 @@ from flask import Flask
 from flask_testing import TestCase
 
 class TestConfig(object):
-    DATABASE_URI = "postgresql://alessandro:alessandro@localhost:5433/alessandro"
+    DATABASE_URI = "postgresql://postgres:alessandro@localhost:5433/alessandro"
     TESTING = True
     WTF_CSRF_ENABLED = False
 class BaseTestCase(TestCase):
