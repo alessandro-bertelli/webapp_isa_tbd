@@ -188,3 +188,5 @@ cython_debug/
 *.gz
 
 *.aux
+
+.DS_Store

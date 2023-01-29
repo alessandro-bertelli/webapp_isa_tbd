@@ -302,7 +302,7 @@ def delete():
 
 # PAGINA /order/ - funzione order()
 # Connessione al database
-# SELECT tutte le informazioni necessarie per il riepilogo dell'ordine.
+# SELECT di tutte le informazioni necessarie per il riepilogo dell'ordine.
 
 @app.route('/order/')
 

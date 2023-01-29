@@ -2,6 +2,7 @@ import psycopg2
 from flask import Flask
 from flask_testing import TestCase
 
+# Configuro tramite URI la connessione al database postgres per l'esecuzione dei test
 class TestConfig(object):
     DATABASE_URI = "postgresql://postgres:alessandro@localhost:5433/alessandro"
     TESTING = True
